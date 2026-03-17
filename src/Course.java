@@ -1,10 +1,8 @@
 public class Course {
     private String name;
-
     public Course(String name) {
         this.name = name;
     }
-
     public String getName() {
         return name;
     }
@@ -12,12 +10,18 @@ public class Course {
     // TODO: Task 4 — Обязательно переопредели (иначе HashMap не будет работать!)
     @Override
     public boolean equals(Object o) {
-        return false; // заглушка
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course other = (Course) o;
+        if (name == null) {
+            return other.name == null;
+        }
+        return name.equals(other.name);
     }
 
     @Override
     public int hashCode() {
-        return 0; // заглушка
+        return name == null ? 0 : name.hashCode();
     }
 
     @Override
